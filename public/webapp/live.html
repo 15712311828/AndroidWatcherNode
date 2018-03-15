@@ -11,7 +11,7 @@
     <script src="/js/queryParam.js"></script>
     <script>
         $(document).ready(function(){
-            var video="<video id=\"video\" class=\"video-js\" controls=\"controls\" autoplay=\"false\" preload=\"no\" width=\"640\" height=\"360\" data-setup=\"{}\"/>";
+            var video="<video id=\"video\" class=\"video-js\" controls=\"controls\" autoplay=\"false\" preload=\"no\" width=\"640px\" height=\"360px\" data-setup=\"{}\"/>";
             $("#video-div").html(video);
             var name=getQueryString("name");
             var source = $("<source src=\""+ "rtmp://androidwatcher.cn/live/" + name+"\"/>");
