@@ -16,6 +16,8 @@
             var name=getQueryString("name");
             var source = $("<source src=\""+ "rtmp://androidwatcher.cn/live/" + name+"\"/>");
             $("#video").append(source);
+            var warn="<p>不支持手机浏览器播放，电脑无法播放请尝试打开flash</p>";
+            $("#video-div").append(warn);
         });
     </script>
 </head>
