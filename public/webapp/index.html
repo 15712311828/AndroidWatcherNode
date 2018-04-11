@@ -1,12 +1,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
     <title>Android Watcher</title>
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
-    <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
     <script>
-
+        $(function(){
+            $("#btn_submit").click(function(){
+                param={};
+                param.name=$('input[name=name]').val();
+                var json=JSON.stringify(param);
+                $.ajax({
+                    type: "POST",
+                    url: "/api/user/login",
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    data: json,
+        　　　　　　　　　success: function(result){
+                        if(result.status==0){
+                            $(location).attr('href', '/live.html');
+                        }
+                        else{
+                            alert(result.message);
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body>
@@ -15,7 +37,7 @@
             <div class="form-group">
                 <input type="text" class="form-control" name="name" id="name" placeholder="请输入您的机器名"/>
             </div>
-            <input type="submit" class="btn btn-default"/>
+            <input type="button" class="btn btn-default" id="btn_submit"/>
         </form>
         <br>
         <a class="item" href="/download/android-watcher.apk">点击下载apk</a>
