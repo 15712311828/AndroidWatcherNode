@@ -11,6 +11,7 @@
             $("#btn_submit").click(function(){
                 param={};
                 param.name=$('input[name=name]').val();
+                param.password=$('input[name=password]').val();
                 var json=JSON.stringify(param);
                 $.ajax({
                     type: "POST",
@@ -20,7 +21,7 @@
                     data: json,
         　　　　　　　　　success: function(result){
                         if(result.status==0){
-                            $(location).attr('href', '/webapp/live.html');
+                            $(location).attr('href', '/webapp/menu.html');
                         }
                         else{
                             alert(result.message);
@@ -35,14 +36,12 @@
     <div class="mid-div">
         <form class="form">
             <div class="form-group">
-                <input type="text" class="form-control" name="name" id="name" placeholder="请输入您的机器名"/>
+                <input type="text" class="form-control" name="name" id="name" placeholder="请输入管理员用户名"/>
             </div>
-            <input type="button" class="btn btn-default" id="btn_submit">确定</input>
+            <div class="form-group">
+                <input type="text" class="form-control" name="password" id="password" placeholder="请输入密码"/>
+            </div>
+            <input type="button" class="btn btn-default" id="btn_submit" value="登陆"/>
         </form>
-        <br>
-        <a class="item" href="/download/android-watcher.apk">点击下载apk</a>
-        <p class="item">或手机输入http://androidwatcher.cn/download/android-watcher.apk下载</p>
-        <p class="item">或扫码下载</p>
-        <img src="/pic/downloadlink.png"/>
     </div>
 </body>

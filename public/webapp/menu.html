@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+    <title>Android Watcher</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                type: "POST",
+                url: "/api/user/name",
+                dataType: "json",
+                success: function(result){
+                    if(result.status==0){
+                        var name=result.data;
+                    }
+                    else{
+                        alert("未登录");
+                        $(location).attr('href', '/');
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    
+</body>
