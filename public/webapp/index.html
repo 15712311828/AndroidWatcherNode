@@ -20,7 +20,7 @@
                     data: json,
         　　　　　　　　　success: function(result){
                         if(result.status==0){
-                            $(location).attr('href', '/live.html');
+                            $(location).attr('href', '/webapp/live.html');
                         }
                         else{
                             alert(result.message);
@@ -33,11 +33,11 @@
 </head>
 <body>
     <div class="mid-div">
-        <form class="form" action="/webapp/live.html">
+        <form class="form">
             <div class="form-group">
                 <input type="text" class="form-control" name="name" id="name" placeholder="请输入您的机器名"/>
             </div>
-            <input type="button" class="btn btn-default" id="btn_submit"/>
+            <input type="button" class="btn btn-default" id="btn_submit">确定</input>
         </form>
         <br>
         <a class="item" href="/download/android-watcher.apk">点击下载apk</a>
