@@ -1,28 +1,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
     <title>Android Watcher</title>
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/menu.css"/>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script>
-        $(function(){
-            $.ajax({
-                type: "POST",
-                url: "/api/user/name",
-                dataType: "json",
-                success: function(result){
-                    if(result.status==0){
-                        var name=result.data;
-                    }
-                    else{
-                        alert("未登录");
-                        $(location).attr('href', '/');
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/menu.js"></script>
 </head>
 <body>
-    
+    <div class="header">
+        <span id="name" class="name"></span>
+        <a class="return" href="/">退出</a>
+    </div>
+    <div class="tabs-div">
+        <div class="tab">
+            <ul class='nav nav-pills nav-stacked'>
+              <p class="title"> 账号管理：</p>
+              <li class='active'><a href='#new-user' data-toggle='tab'>新建账号</a></li>
+              <li><a href='#all-user' data-toggle='tab'>所有账号</a></li>
+              <p class="title">监控：</p>
+              <li><a href='#video' data-toggle='tab'>视频</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class='tab-content'>
+              <div class='tab-pane active' id='new-user'>
+                  <fieldset>
+                    <legend>新账号</legend>
+                    <form class="form">
+                        <label>用户名：</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="用户名"/>
+                        </div>
+                        <label>密码：</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="密码"/>
+                        </div>
+                        <label>确认密码：</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="comfirm-password" id="comfirm-password" placeholder="确认密码"/>
+                        </div>
+                        <input type="button" class="btn btn-default" id="btn_submit" value="添加"/>
+                    </form>
+                  </fieldset>
+              </div>
+              <div class='tab-pane' id='all-user'>我是选项卡二的内容</div>
+              <div class='tab-pane' id='video'>我是选项卡三的内容</div>
+            </div>
+        </div>
+    </div>
 </body>
