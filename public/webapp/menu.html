@@ -40,12 +40,31 @@
                         <div class="form-group">
                             <input type="password" class="form-control" name="comfirm-password" id="comfirm-password" placeholder="确认密码"/>
                         </div>
-                        <input type="button" class="btn btn-default" id="btn_submit" value="添加"/>
+                        <input type="button" class="btn btn-default" id="btn_add_user" value="添加"/>
                     </form>
                   </fieldset>
               </div>
-              <div class='tab-pane' id='all-user'>我是选项卡二的内容</div>
-              <div class='tab-pane' id='video'>我是选项卡三的内容</div>
+              <div class='tab-pane' id='all-user'>
+                  <div class="table-header">
+                      <p class="table-header-label">所有用户：</p>
+                  </div>
+                  <div class="table-div">
+                      <table id="user-list-table" class="table table-hover">
+                          <tr name="head">
+                              <th>#</th>
+                              <th>name</th>
+                              <th>delete</th>
+                          </tr>
+                      </table>
+                  </div>
+                  <div>
+                      <button id="last-page" class="btn" type="button">上一页</button>
+                      <button id="next-page" class="btn" type="button">下一页</button>
+                  </div>
+              </div>
+              <div class='tab-pane' id='video'>
+
+              </div>
             </div>
         </div>
     </div>

@@ -40,3 +40,13 @@
     margin-bottom: 5%;
     font-weight: bold;
 }
+.table-header{
+    margin-top: 5%;
+}
+.table-header-label{
+    font-weight:bold;
+    font-size:18px;
+}
+.table-div{
+    margin-top: 5%;
+}
