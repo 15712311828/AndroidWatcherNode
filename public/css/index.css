@@ -1,13 +1,14 @@
-.mid-div{
-    text-align: center;
-    background-color: #fff;
+.form-div{
     border-radius: 20px;
-    width: 30%;
-    height: 50%;
+    width: 80%;
+    height: auto;
     margin: auto;
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+}
+.header{
+    text-align: center;
+    margin: 8%;
 }
