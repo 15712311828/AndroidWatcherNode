@@ -86,7 +86,12 @@ $(function(){
         loadUserList(UserListPageNum,10);
     });
 
+    var lastplayer=null;
     $("#device-comfirm").click(function(){
+        if(lastplayer!=null){
+            lastplayer.dispose();
+            $("#video-div").append("<video id='my-player'/>");
+        }
         var device=$('input[name=device-name]').val();
         var rtmplink="rtmp://118.89.229.227/live/"+device;
         var hlslink="http://118.89.229.227/live/"+device+".m3u8";
@@ -99,10 +104,11 @@ $(function(){
                 type:"application/x-mpegURL",
             }]
         };
-        var player = videojs('my-player', options, function onPlayerReady() {
+        var player = videojs("my-player", options, function onPlayerReady() {
           videojs.log('Your player is ready!');
           this.play();
         });
+        lastplayer=player;
     });
 });
 function loadUserList(pageNum,pageSize){
