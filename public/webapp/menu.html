@@ -3,8 +3,10 @@
     <title>Android Watcher</title>
     <link rel="stylesheet" href="/css/menu.css"/>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="/css/video-js.css" rel="stylesheet">
     <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/video.min.js"></script>
     <script src="/js/menu.js"></script>
 </head>
 <body>
@@ -17,6 +19,7 @@
             <ul class='nav nav-pills nav-stacked'>
               <p class="title"> 账号管理：</p>
               <li class='active'><a href='#new-user' data-toggle='tab'>新建账号</a></li>
+              <li><a href='#change-password' data-toggle='tab'>修改密码</a></li>
               <li><a href='#all-user' data-toggle='tab'>所有账号</a></li>
               <p class="title">监控：</p>
               <li><a href='#video' data-toggle='tab'>视频</a></li>
@@ -44,6 +47,22 @@
                     </form>
                   </fieldset>
               </div>
+              <div class='tab-pane' id='change-password'>
+                  <fieldset>
+                    <legend>修改密码</legend>
+                    <form class="form">
+                        <label>新密码：</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="new-password" id="new-password" placeholder="新密码"/>
+                        </div>
+                        <label>确认密码：</label>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="comfirm-new-password" id="comfirm-new-password" placeholder="确认密码"/>
+                        </div>
+                        <input type="button" class="btn btn-default" id="btn_change_password" value="修改"/>
+                    </form>
+                  </fieldset>
+              </div>
               <div class='tab-pane' id='all-user'>
                   <div class="table-header">
                       <p class="table-header-label">所有用户：</p>
@@ -53,7 +72,7 @@
                           <tr name="head">
                               <th>#</th>
                               <th>name</th>
-                              <th>delete</th>
+                              <th>-</th>
                           </tr>
                       </table>
                   </div>
@@ -63,7 +82,19 @@
                   </div>
               </div>
               <div class='tab-pane' id='video'>
-
+                  <fieldset>
+                    <legend>视频</legend>
+                    <div>
+                        <form class="form-inline">
+                            <label>设备名：</label>
+                            <input type="text" name="device-name" class="input-small" placeholder="deviceName"/>
+                            <input type="button" id="device-comfirm" class="btn" value="确认"></button>
+                        </form>
+                    </div>
+                    <div id="video-div">
+                        <video id="my-player"/>
+                    </div>
+                  </fieldset>
               </div>
             </div>
         </div>
