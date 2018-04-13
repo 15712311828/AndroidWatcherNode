@@ -88,10 +88,15 @@ $(function(){
 
     $("#device-comfirm").click(function(){
         var device=$('input[name=device-name]').val();
-        var srclink="rtmp://118.89.229.227/live/"+device;
+        var rtmplink="rtmp://118.89.229.227/live/"+device;
+        var hlslink="http://118.89.229.227/live/"+device+".m3u8";
         var options = {
             sources: [{
-                src: srclink,
+                src: rtmplink,
+                type:"rtmp/flv",
+            },{
+                src: hlslink,
+                type:"application/x-mpegURL",
             }]
         };
         var player = videojs('my-player', options, function onPlayerReady() {
