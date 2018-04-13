@@ -106,7 +106,13 @@ $(function(){
         };
         var player = videojs("my-player", options, function onPlayerReady() {
           videojs.log('Your player is ready!');
-          this.play();
+          try{
+              this.play();
+          }
+          catch(e){
+              this.dispose();
+              alert("电脑端请打开flash刷新重试，手机浏览器需要在视频开始传输后播放");
+          }
         });
         lastplayer=player;
     });
