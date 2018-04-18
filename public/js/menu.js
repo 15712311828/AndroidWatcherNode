@@ -116,6 +116,7 @@ $(function(){
         });
         lastplayer=player;
     });
+
 });
 function loadUserList(pageNum,pageSize){
     param={};
@@ -155,6 +156,8 @@ function loadUserList(pageNum,pageSize){
             }
         }
     });
+
+    refreshMap();
 };
 function deleteUser(id){
     param={};
@@ -177,3 +180,67 @@ function deleteUser(id){
         }
     });
 };
+function refreshMap(){
+  $.ajax({
+      type: "POST",
+      url: "/api/location/getAll",
+      dataType: "json",
+      contentType: "application/json;charset=utf-8",
+  　　success: function(result){
+          if(result.status==0){
+
+              var data=result.data;
+              if(data.length==0){
+                $("#map-container").append("暂无数据");
+                return;
+              }
+              var mp = new BMap.Map("map-container");
+              var arr=[];
+              var nameArr=[];
+              for(var i=0;i<data.length;i++){
+                arr.push(new BMap.Point(data[i].longitude,data[i].latitude));
+                nameArr.push(data[i].name);
+              }
+              translateCallback = function (data){
+                if(data.status === 0) {
+                  var points=data.points;
+                  var view=mp.getViewport(points,[]);
+                  mp.setViewport(view);
+                  for(var i=0;i<points.length;i++){
+                    var marker = new BMap.Marker(data.points[i]);
+                    mp.addOverlay(marker);
+                    var label = new BMap.Label(nameArr[i],{offset:new BMap.Size(20,-10)});
+                    marker.setLabel(label);
+                  }
+                }
+              }
+              mp.centerAndZoom(new BMap.Point(116.3964,39.9093), 1);
+              mp.enableScrollWheelZoom();
+              setTimeout(function(){
+                  var convertor = new BMap.Convertor();
+                  convertor.translate(arr, 1, 5, translateCallback)
+                }, 1000);
+
+              var canvasLayer = new BMap.CanvasLayer({
+                  update: update
+              });
+
+              function update() {
+                  var ctx = this.canvas.getContext("2d");
+                  if (!ctx) {
+                      return;
+                  }
+                  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+                  var temp = {};
+                  ctx.fillStyle = "rgba(50, 50, 255, 0.7)";
+                  ctx.beginPath();
+              }
+              mp.addOverlay(canvasLayer);
+          }
+          else{
+              alert(result.message);
+          }
+      }
+  });
+}

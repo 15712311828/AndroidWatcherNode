@@ -1,5 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>Android Watcher</title>
     <link rel="stylesheet" href="/css/menu.css"/>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -7,6 +9,7 @@
     <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/video.min.js"></script>
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=3.0&ak=jqBXp94lOuytm1t1YIRVTebivGkwO23B"></script>
     <script src="/js/menu.js"></script>
 </head>
 <body>
@@ -23,6 +26,7 @@
               <li><a href='#all-user' data-toggle='tab'>所有账号</a></li>
               <p class="title">监控：</p>
               <li><a href='#video' data-toggle='tab'>视频</a></li>
+              <li><a href='#location' data-toggle='tab'>位置</a></li>
             </ul>
         </div>
         <div class="content">
@@ -93,6 +97,14 @@
                     </div>
                     <div id="video-div">
                         <video id="my-player"/>
+                    </div>
+                  </fieldset>
+              </div>
+              <div class='tab-pane' id='location'>
+                  <fieldset>
+                    <legend>地图</legend>
+                    <div id="map-container" class="map-container">
+
                     </div>
                   </fieldset>
               </div>
