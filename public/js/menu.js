@@ -158,6 +158,13 @@ function loadUserList(pageNum,pageSize){
     });
 
     refreshMap();
+
+    $("#refresh-map").click(function(){
+      $("#map-container").empty();
+      refreshMap();
+    });
+
+
 };
 function deleteUser(id){
     param={};
@@ -181,6 +188,7 @@ function deleteUser(id){
     });
 };
 function refreshMap(){
+  $("#map-container").empty();
   $.ajax({
       type: "POST",
       url: "/api/location/getAll",
@@ -210,11 +218,12 @@ function refreshMap(){
                     var marker = new BMap.Marker(data.points[i]);
                     mp.addOverlay(marker);
                     var label = new BMap.Label(nameArr[i],{offset:new BMap.Size(20,-10)});
+                    label.setStyle({maxWidth:"none"});
                     marker.setLabel(label);
                   }
                 }
               }
-              mp.centerAndZoom(new BMap.Point(116.3964,39.9093), 1);
+              mp.centerAndZoom(new BMap.Point(123.425966,41.771849), 10);
               mp.enableScrollWheelZoom();
               setTimeout(function(){
                   var convertor = new BMap.Convertor();
