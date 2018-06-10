@@ -130,7 +130,7 @@ $(function(){
           data: json,
       　　success: function(result){
               if(result.status==0){
-                  $("#status").html(result.data);
+                  $("#status-p").html(result.data);
               }
               else{
                   alert(result.message);
