@@ -130,7 +130,7 @@ $(function(){
           data: json,
       　　success: function(result){
               if(result.status==0){
-                  $("#status-p").html("人物状态"+result.data);
+                  $("#status-p").html("人物状态："+result.data);
               }
               else{
                   alert(result.message);
