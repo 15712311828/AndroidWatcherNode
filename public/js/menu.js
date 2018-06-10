@@ -130,7 +130,7 @@ $(function(){
           data: json,
       　　success: function(result){
               if(result.status==0){
-                  $("#status-device-comfirm").html(result.data);
+                  $("#status").html(result.data);
               }
               else{
                   alert(result.message);
