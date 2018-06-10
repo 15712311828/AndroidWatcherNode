@@ -117,6 +117,28 @@ $(function(){
         lastplayer=player;
     });
 
+    $("#status-device-comfirm").click(function(){
+      var deviceName=$('input[name=status-device-name]').val();
+      param={};
+      param.deviceName=deviceName;
+      var json=JSON.stringify(param);
+      $.ajax({
+          type: "POST",
+          url: "/api/health/status",
+          dataType: "json",
+          contentType: "application/json;charset=utf-8",
+          data: json,
+      　　success: function(result){
+              if(result.status==0){
+                  $("#status-device-comfirm").html(result.data);
+              }
+              else{
+                  alert(result.message);
+              }
+          }
+      });
+    });
+
 });
 function loadUserList(pageNum,pageSize){
     param={};

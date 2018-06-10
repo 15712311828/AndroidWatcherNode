@@ -25,9 +25,10 @@
               <li class='active'><a href='#new-user' data-toggle='tab'>新建账号</a></li>
               <li><a href='#change-password' data-toggle='tab'>修改密码</a></li>
               <li><a href='#all-user' data-toggle='tab'>所有账号</a></li>
-              <p class="title">监控：</p>
+              <p class="title">数据：</p>
               <li><a href='#video' data-toggle='tab'>视频</a></li>
               <li><a href='#location' data-toggle='tab'>位置</a></li>
+              <li><a href='#status' data-toggle='tab'>状态</a></li>
             </ul>
         </div>
         <div class="content">
@@ -108,6 +109,19 @@
 
                     </div>
                     <button id="refresh-map" class="btn" type="button">刷新</button>
+                  </fieldset>
+              </div>
+              <div class='tab-pane' id='status'>
+                  <fieldset>
+                    <legend>人物状态</legend>
+                    <div>
+                        <form class="form-inline">
+                            <label>设备名：</label>
+                            <input type="text" name="status-device-name" class="input-small" placeholder="deviceName"/>
+                            <input type="button" id="status-device-comfirm" class="btn" value="确认"></button>
+                        </form>
+                    </div>
+                    <p id="status">输入设备名后，点击按钮获取</p>
                   </fieldset>
               </div>
             </div>
